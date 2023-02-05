@@ -60,7 +60,7 @@ jobs:
           private_key: ${{ secrets.PRIVATE_KEY }}
       - id: renovate-setup
         run: |
-          if [ "$GITHUB_EVEN_NAME" == "pull_request" ]; then
+          if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
             echo "DRY_RUN=full" >> $GITHUB_OUTPUT
           else
             echo "DRY_RUN=${{ inputs.dryRun }}" >> $GITHUB_OUTPUT
