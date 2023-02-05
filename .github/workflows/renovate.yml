@@ -65,7 +65,6 @@ jobs:
           else
             echo "DRY_RUN=${{ inputs.dryRun }}" >> $GITHUB_OUTPUT
           fi
-      - run: echo "${{ steps.renovate-setup.outputs.DRY_RUN }}"
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v34.109.1
         with:
