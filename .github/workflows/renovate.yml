@@ -36,7 +36,6 @@ on:
             
           Information provided mainly in debug log level.
         required: false
-        default: ${{ null }}
         options:
           - extract
           - lookup
