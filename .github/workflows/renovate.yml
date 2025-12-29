@@ -17,7 +17,7 @@ on:
           Renovate log levels are used to control the amount of detail that is output in the Renovate log files.
           Log levels range: trace, debug, info, warn, error, fatal.
         required: true
-        default: 'warn'
+        default: 'fatal'
         options:
           - trace
           - debug
