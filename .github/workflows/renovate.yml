@@ -73,6 +73,6 @@ jobs:
           configurationFile: renovate-config.js
           token: ${{ steps.action-github-app-token.outputs.token }}
         env:
-          LOG_LEVEL: ${{ inputs.logLevel || 'warn' }}
+          LOG_LEVEL: ${{ inputs.logLevel || 'fatal' }}
           RENOVATE_AUTODISCOVER: true
           RENOVATE_DRY_RUN: ${{ steps.renovate-setup.outputs.DRY_RUN }}
