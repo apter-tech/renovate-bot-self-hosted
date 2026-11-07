@@ -46,6 +46,10 @@ on:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
     # string has to be quoted.
     - cron: '0 */2 * * *'
+# Runs can outlast the 2-hour schedule; queue instead of running two at once.
+concurrency:
+  group: renovate-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+  cancel-in-progress: false
 jobs:
   renovate:
     runs-on: ubuntu-24.04
@@ -76,3 +80,5 @@ jobs:
           LOG_LEVEL: ${{ inputs.logLevel || 'fatal' }}
           RENOVATE_AUTODISCOVER: true
           RENOVATE_DRY_RUN: ${{ steps.renovate-setup.outputs.DRY_RUN }}
+          # Autodiscover runs hit Node's default ~4 GB heap limit (exit 134). Public runners have 16 GB.
+          NODE_OPTIONS: --max-old-space-size=12288
